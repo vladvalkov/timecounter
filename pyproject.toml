@@ -1,0 +1,13 @@
+[project]
+name = "timecounter"
+version = "1.0.0"
+description = "Count events over time"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = []
+
+[tool.uv]
+dev-dependencies = [
+    "pytest>=8.3.4",
+    "ruff>=0.8.2",
+]

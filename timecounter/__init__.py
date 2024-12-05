@@ -28,7 +28,12 @@ class TimeCounter:
             if self.increments[i][0] < (curtime - self.retention) // self.bucket:
                 self.increments.pop(0)
 
-    def last(self, seconds: int):
+    def last(self, seconds: int) -> int:
+        """
+        Returns the number of events in the last n seconds.
+        :param seconds: Number of seconds to look back
+        :return: Number of events
+        """
         if seconds > self.retention:
             raise ValueError("Cannot measure time more than retention")
         if seconds < self.bucket:
@@ -36,6 +41,3 @@ class TimeCounter:
         return sum(
             [i[1] for i in self.increments if i[0] >= (time.time() - seconds) // self.bucket]
         )
-
-    def between(self, start: float, end: float):
-        return sum([i[1] for i in self.increments if start <= i[0] < end])
