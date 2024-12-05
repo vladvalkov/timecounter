@@ -4,7 +4,7 @@ import time
 class TimeCounter:
     retention: int
     bucket: float
-    increments: list[tuple[float, int]] = []
+    increments: list[tuple[float, int]]
 
     def __init__(self, retention: int, bucket: float):
         """
@@ -15,6 +15,7 @@ class TimeCounter:
         """
         self.retention = retention
         self.bucket = bucket
+        self.increments = []
 
     def add(self, n: int):
         curtime = time.time()

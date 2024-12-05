@@ -13,15 +13,15 @@ def test_timecount():
     assert counter.last(1) == 6
 
 
+def add_one(counter: TimeCounter):
+    counter.add(1)
+    time.sleep(0.01)
+
+
 def test_multithreaded():
     counter = TimeCounter(20, 0.4)
-
-    def add_one():
-        counter.add(1)
-        time.sleep(0.01)
-
     with ThreadPoolExecutor(max_workers=100) as executor:
         for i in range(10000):
-            executor.submit(add_one)
+            executor.submit(add_one, (counter))
 
     assert counter.last(20) == 10000

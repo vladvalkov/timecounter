@@ -79,8 +79,8 @@ wheels = [
 
 [[package]]
 name = "timecounter"
-version = "1.0.0"
-source = { virtual = "." }
+version = "2.0.2.dev0+g664679e.d20241205"
+source = { editable = "." }
 
 [package.dev-dependencies]
 dev = [
